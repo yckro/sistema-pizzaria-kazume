@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sistema pizzaria</title>
+
+  <link rel="stylesheet" href="/src/css/style.css" />
+  <link rel="stylesheet" href="/src/css/variable.css" />
+  <link rel="stylesheet" href="/src/css/reset.css" />
+  <link rel="stylesheet" href="/src/css/global.css">
+</head>
+
+<head>
+  <title>sistema para pizzaria</title>
+</head>
+
+
+<body class="centralize">
+  <form onsubmit="return false;">
+    <div class="form-field">
+      <div><label>Email</label></div>
+      <input type="email" name="email" id="email" placeholder="seu@email.com" onchange="onChangeEmail()" />
+      <div class="error" id="email-required-error">Email é obrigatório</div>
+      <div class="error" id="email-invalid-error">Email é inválido</div>
+    </div>
+
+      <div class="form-field">
+        <div><label>Senha</label></div>
+        <input type="password" name="password" id="password" placeholder="Senha" onchange="onChangePassword()" />
+        <div class="error" id="password-required-error">Senha é obrigatória</div>
+      </div>
+
+      <div>
+        <button type="button" class="clear" id="recover-password-button" disabled="true" onclick="recoverPassword()">Recuperar senha</button>
+      </div>
+
+      <div>
+        <button type="button" class="solid" id="login-button" disabled="true" onclick="login()">Entrar</button>
+      </div>
+
+      <div>
+        <button type="button" class="outline" onclick="register()">Registrar</button>
+      </div>
+
+
+  </form>
+</body>
+
+
+
+<script src="index.js"></script>
+<script src="validations.js"></script>
+
+
+
+</html>
