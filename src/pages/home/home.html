@@ -4,8 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
+
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="home.css">
 </head>
+
 <body>
-    <h1>home</h1>
+    <header>
+        <button type="button" class="clear" onclick="logout()">Sair</button>
+    </header>
 </body>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script src="../../../firebase-init.js"></script>
+
+<script src="home.js"></script>
+<script src="../../../auth-guard.js"></script>
+
+
 </html>
