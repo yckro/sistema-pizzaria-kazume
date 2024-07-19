@@ -1,3 +1,9 @@
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        window.location.href = "src/pages/home/home.html";
+    }
+})
+
 function onChangeEmail() {
     toggleButtonsDisable();
     toggleEmailErrors();
@@ -12,13 +18,17 @@ function login() {
     showLoading();
     firebase.auth().signInWithEmailAndPassword(
         form.email().value, form.password().value
-    ).then(response => {
+    ).then(() => {
         hideLoading();
-        window.location.href = "pages/home/home.html";
+        window.location.href = "src/pages/home/home.html";
     }).catch(error => {
         hideLoading();
-        alert("Usuario não encontrado");
+        alert(getErrorMessage(error));
     });
+}
+
+function register() {
+    window.location.href = "src/pages/register/register.html";
 }
 
 function recoverPassword() {
@@ -32,7 +42,6 @@ function recoverPassword() {
     });
 }
 
-
 function getErrorMessage(error) {
     if (error.code == "auth/user-not-found") {
         return "Usuário nao encontrado";
@@ -43,20 +52,16 @@ function getErrorMessage(error) {
     return error.message;
 }
 
-function register() {
-    window.location.href = "pages/register/register.html";
-}
-
 function toggleEmailErrors() {
     const email = form.email().value;
-    form.emailRequiredError().classList.toggle('show', !email);
-
-    form.emailInvalidError().classList.toggle('show', email && !validateEmail(email));
+    form.emailRequiredError().style.display = email ? "none" : "block";
+    
+    form.emailInvalidError().style.display = validateEmail(email) ? "none" : "block";
 }
 
 function togglePasswordErrors() {
     const password = form.password().value;
-    form.passwordRequiredError().classList.toggle('show', !password);
+    form.passwordRequiredError().style.display = password ? "none" : "block";
 }
 
 function toggleButtonsDisable() {
@@ -87,11 +92,4 @@ const form = {
     password: () => document.getElementById("password"),
     passwordRequiredError: () => document.getElementById("password-required-error"),
     recoverPasswordButton: () => document.getElementById("recover-password-button"),
-}
-
-document.querySelector('form').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        login(); 
-    }
-});
+} 

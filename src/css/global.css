@@ -1,27 +1,81 @@
-input, button {
-    padding: 10px;
-    width: 100%;
+body {
+    margin: 0;
+    color: white;
+    background: linear-gradient(0.30turn, #d11507, #f69d3c);
 }
 
-.centralize{
+header {
+    text-align: right;
+}
+
+header button {
+    width: auto;
+}
+
+.centralize {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.form-field{
+.form-field {
     margin-bottom: 10px;
 }
 
-.loading{
-    background: rgb(0, 0, 0, 0.5);
+input,
+button,
+select {
+    padding: 10px;
+    width: 100%;
+}
+
+input[type="radio"] {
+    width: auto;
+}
+
+.loading {
+    background: rgba(0, 0, 0, 0.5);
     position: fixed;
     width: 100%;
     height: 100%;
+    top: 0;
 }
 
-.loading label{
+.loading label {
     font-size: 24px;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:active {
+    opacity: 0.8;
+}
+
+button[disabled] {
+    opacity: 0.8;
+}
+
+button.fab {
+    width: 54px;
+    height: 54px;
+    border-radius: 50px;
+    border: none;
+    font-size: 24px;
+    box-shadow: 2px 2px 2px gray;
+}
+
+button.fab.fixed {
+    position: fixed;
+}
+
+button.fab.bottom {
+    bottom: 32px;
+}
+
+button.fab.right {
+    right: 32px;
 }
 
 .clear {
@@ -34,8 +88,6 @@ input, button {
     background: white;
     border: none;
     color: rgb(45, 211, 111);
-    font-size: 15px;
-    font-weight: 500;
 }
 
 .outline {
@@ -44,30 +96,16 @@ input, button {
     border: 1px solid white;
 }
 
-button:active {
-    opacity: 0.8;
+.outline.danger {
+    color: red;
+    border-color: red;
 }
 
-button[disabled]{
-    opacity: 0.7;
-    margin-bottom: 10px;
-}
-
-.error{
+.error {
     color:white;
     border: 1px solid white;
     background: red;
     text-align: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease-out, visibility 0.5s ease-out;
-    height: 0;
-    overflow: hidden;
+    display: none;
 }
 
-
-.error.show {
-    opacity: 1;
-    visibility: visible;
-    height: auto;
-}

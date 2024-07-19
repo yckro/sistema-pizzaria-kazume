@@ -1,3 +1,9 @@
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        window.location.href = "../../scr/pages/home/home.html";
+    }
+})
+
 function onChangeEmail() {
     const email = form.email().value;
     form.emailRequiredError().style.display = email ? "none" : "block";
@@ -31,7 +37,7 @@ function register() {
         email, password
     ).then(() => {
         hideLoading();
-        window.location.href = "../../pages/home/home.html";
+        window.location.href = "../../src/pages/home/home.html";
     }).catch(error => {
         hideLoading();
         alert(getErrorMessage(error));
@@ -50,7 +56,7 @@ function validatePasswordsMatch() {
     const confirmPassword = form.confirmPassword().value;
 
     form.confirmPasswordDoesntMatchError().style.display =
-        password === confirmPassword ? "none" : "block";
+        password == confirmPassword ? "none" : "block";
 }
 
 function toggleRegisterButtonDisable() {
@@ -69,7 +75,7 @@ function isFormValid() {
     }
 
     const confirmPassword = form.confirmPassword().value;
-    if (password !== confirmPassword) {
+    if (password != confirmPassword) {
         return false;
     }
 
@@ -86,4 +92,4 @@ const form = {
     passwordMinLengthError: () => document.getElementById('password-min-length-error'),
     passwordRequiredError: () => document.getElementById('password-required-error'),
     registerButton: () => document.getElementById('register-button')
-};
+}
