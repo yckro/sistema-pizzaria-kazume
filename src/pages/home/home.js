@@ -6,36 +6,52 @@ function logout() {
     })
 }
 
-const fakeTransactions = [{
-    type: 'expense',
-    date: '2022-01-04',
-    money: {
-        currency: 'R$',
-        value: 10
-    },
-    transactionTape: 'supermercado'
-}, {
-    type: 'expense',
-    date: '2022-01-09',
-    money: {
-        currency: 'R$',
-        value: 1000
-    },
-    transactionTape: 'salário'
-}, {
-    type: 'expense',
-    date: '2022-01-05',
-    money: {
-        currency: 'R$',
-        value: 109
-    },
-    transactionTape:'supermercado'
-}, {
-    type: 'expense',
-    date: '2022-01-06',
-    money: {
-        currency: 'R$',
-        value: 108
-    },
-    transactionTape:'supermercado'
-}]
+findTransactions();
+
+function findTransactions() {
+    firebase.firestore()
+        .collection('transactions')
+        .get()
+        .then(snapshot => {
+            const transactions = snapshot.docs.map(doc => doc.data());
+            addTransactionsToScreen(transactions);
+
+        })
+}
+
+function addTransactionsToScreen(transactions) {
+    const orderedList = document.getElementById('transactions');
+
+    transactions.forEach(transaction => {
+        const li = document.createElement('li');
+        li.classList.add(transaction.type);
+
+        const date = document.createElement('p');
+        date.innerHTML = formatDate(transaction.date);
+        li.appendChild(date);
+
+        const money = document.createElement('p')
+        money.innerHTML = formatMoney(transaction.money);
+        li.appendChild(money);
+
+        const type = document.createElement('p');
+        type.innerHTML = transaction.transactionType;
+        li.appendChild(type);
+
+        if (transaction.description) {
+            const description = document.createElement('p');
+            description.innerHTML = transaction.description;
+            li.appendChild(description)
+        }
+
+        orderedList.appendChild(li);
+    });
+}
+
+function formatDate(date) {
+    return new Date(date).toLocaleDateString('pt-br');
+}
+
+function formatMoney(money) {
+    return `${money.currency} ${money.value.toFixed(2)}`
+}

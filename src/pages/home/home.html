@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,28 +15,7 @@
         <button type="button" class="clear" onclick="logout()">Sair</button>
     </header>
 
-    <ol>
-        <li class="expense">
-            <b>11/11/2000</b>
-            <p>R$ 10,00</p>
-            <p>salario</p>
-        </li>
-        <li class="income">
-            <b>11/11/2000</b>
-            <p>R$ 10,00</p>
-            <p>salario</p>
-        </li>
-        <li class="expense">
-            <b>11/11/2000</b>
-            <p>R$ 10,00</p>
-            <p>salario</p>
-        </li>
-        <li class="expense">
-            <b>11/11/2000</b>
-            <p>R$ 10,00</p>
-            <p>salario</p>
-        </li>
-    </ol>
+    <ol id="transactions"></ol>
 
     <button class="fab fixed bottom right">+</button>
 
@@ -43,6 +23,8 @@
 
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+
 <script src="../../../firebase-init.js"></script>
 
 <script src="home.js"></script>
