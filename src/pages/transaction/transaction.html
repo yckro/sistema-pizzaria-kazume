@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaçao</title>
+
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="transaction.css">
+    <link rel="stylesheet" href="../../css/reset.css">
+</head>
+
+<body>
+    <header>
+        <button type="button" class="clear" onclick="logout()">Sair</button>
+    </header>
+
+    <main class="centralize">
+        <form>
+
+            <div class="form-field">
+                <div><label>Tipo da Transação</label></div>
+                <select>
+                    <option>-- Selecione um tipo de Transação --</option>
+                    <option>Aluguel</option>
+                    <option>Cozinha</option>
+                    <option>Salário</option>
+                    <option>Faturamento</option>
+                    <option>Outros</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <div><label>Valor</label></div>
+                <input type="number">
+            </div>
+
+            <div class="form-field">
+                <div><label>Data da Transação</label></div>
+                <input type="date" onchange="onchangeDate()" id="date">
+                <div class="error" id="date-required-error">
+                    Data é obrigatório/ Inválida
+            </div>
+
+            <div class="form-field">
+                <div><label>Moeda</label></div>
+                <select>
+                    <option selected>R$</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <div><label>Descrição</label></div>
+                <input type="text">
+            </div>
+
+            <div class="form-field">
+                <div><label>Transação</label></div>
+                <input type="radio" name="type" checked id="expense">
+                <label for="expense">Despesa</label>
+                <input type="radio" name="type" id="income">
+                <label for="income">Receita</label>
+            </div>
+
+            <button type="button" class="solid" disabled >Salvar</button>
+            <button type="button" class="clear">Cancelar</button>
+        </form>
+    </main>
+
+
+
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+<script src="../../../firebase-init.js"></script>
+<script src="transaction.js"></script>
+<script src="../../../auth-guard.js"></script>
+<script src="../../../loading.js"></script>
+
+
+</html>
