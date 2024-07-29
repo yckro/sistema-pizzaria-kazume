@@ -21,19 +21,29 @@
 
             <div class="form-field">
                 <div><label>Tipo da Transação</label></div>
-                <select>
-                    <option>-- Selecione um tipo de Transação --</option>
+                <select onchange="onChangeTransactionType()" id="transaction-type">
+                    <option value="">-- Selecione um tipo de Transação --</option>
                     <option>Aluguel</option>
                     <option>Cozinha</option>
                     <option>Salário</option>
                     <option>Faturamento</option>
                     <option>Outros</option>
                 </select>
+                <div class="error" id="transaction-type-required-error">
+                    Tipo de transação é obrigatório
+                </div>
             </div>
 
             <div class="form-field">
                 <div><label>Valor</label></div>
-                <input type="number">
+                <input type="number" onChange ="onChangeValue()" id="value">
+                <div class="error" id="value-required-error">
+                    Valor é obrigatório
+                </div>
+                <div class="error" id="value-less-or-equal-to-zero-error">
+                    Valor deve ser maior que zero
+                </div>
+
             </div>
 
             <div class="form-field">
@@ -41,30 +51,30 @@
                 <input type="date" onchange="onchangeDate()" id="date">
                 <div class="error" id="date-required-error">
                     Data é obrigatório/ Inválida
-            </div>
+                </div>
 
-            <div class="form-field">
-                <div><label>Moeda</label></div>
-                <select>
-                    <option selected>R$</option>
-                </select>
-            </div>
+                <div class="form-field">
+                    <div><label>Moeda</label></div>
+                    <select>
+                        <option value="BRL" selected>R$</option>
+                    </select>
+                </div>
 
-            <div class="form-field">
-                <div><label>Descrição</label></div>
-                <input type="text">
-            </div>
+                <div class="form-field">
+                    <div><label>Descrição</label></div>
+                    <input type="text">
+                </div>
 
-            <div class="form-field">
-                <div><label>Transação</label></div>
-                <input type="radio" name="type" checked id="expense">
-                <label for="expense">Despesa</label>
-                <input type="radio" name="type" id="income">
-                <label for="income">Receita</label>
-            </div>
+                <div class="form-field">
+                    <div><label>Transação</label></div>
+                    <input type="radio" name="type" checked id="expense">
+                    <label for="expense">Despesa</label>
+                    <input type="radio" name="type" id="income">
+                    <label for="income">Receita</label>
+                </div>
 
-            <button type="button" class="solid" disabled >Salvar</button>
-            <button type="button" class="clear">Cancelar</button>
+                <button type="button" class="solid" disabled id="save-button">Salvar</button>
+                <button type="button" class="clear">Cancelar</button>
         </form>
     </main>
 
