@@ -10,34 +10,53 @@
     <link rel="stylesheet" href="src/css/variable.css" />
     <link rel="stylesheet" href="src/css/reset.css" />
     <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="/src/css/login.css">
 
     <title>sistema para pizzaria</title>
 </head>
 
-<body class="centralize">
-    <form>
-        <div class="form-field">
-            <div><label>Email</label></div>
-            <input type="email" name="email" id="email" placeholder="seu@email.com" onchange="onChangeEmail()" />
+<body>
+    <div class="login-container">
+        <div class="login-img-box">
+            <img class="login-img" src="/src/imgs/img-login.png" alt="Login Image">
+        </div>
+
+        <form class="login-box" action="#">
+            <h1 class="login-title">Login</h1>
+
+            <input class="login-user" type="email" name="email" id="email" placeholder="seu@email.com" onchange="onChangeEmail()" />
             <div class="error" id="email-required-error">Email é obrigatório</div>
             <div class="error" id="email-invalid-error">Email é inválido</div>
-        </div>
-        <div class="form-field">
-            <div><label>Senha</label></div>
-            <input type="password" name="password" id="password" placeholder="Senha" onchange="onChangePassword()" />
+            
+            <input class="login-password" type="password" name="password" id="password" placeholder="Senha" onchange="onChangePassword()" />
             <div class="error" id="password-required-error">Senha é obrigatória</div>
-        </div>
-        <div>
-            <button type="button" class="clear" id="recover-password-button" onclick="recoverPassword()"
-                disabled="true">Recuperar senha</button>
-        </div>
-        <div>
-            <button type="button" class="solid" id="login-button" disabled="true" onclick="login()">Entrar</button>
-        </div>
-        <div>
-            <button type="button" class="outline" onclick="register()">Registrar</button>
-        </div>
-    </form>
+            
+            <button type="button" class="solid login-btn" id="login-button" disabled="true" onclick="login()">Entrar</button>
+
+            <div class="login-social">
+                <p class="login-social-text">Faça login com</p>
+
+                <div class="login-social-items">
+                    <a class="login-social-link" href="#">
+                        <img class="login-social-img" src="/src/imgs/google.svg" alt="Google Logo">
+                    </a>
+
+                    <a class="login-social-link" href="#">
+                        <img class="login-social-img" src="/src/imgs/facebook.svg" alt="Facebook Logo">
+                    </a>
+
+                    <a class="login-social-link" href="#">
+                        <img class="login-social-img" src="/src/imgs/github.svg" alt="Github Logo">
+                    </a>
+                </div>
+            </div>
+
+            <button type="button" class="clear login-recovery-password" id="recover-password-button" onclick="recoverPassword()"
+                disabled="true">Recuperar senha?</button>
+
+                <button type="button" class="outline login-register" onclick="register()">Registre-se!</button>
+        </form>
+    </div>
 </body>
 
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
