@@ -36,7 +36,7 @@
 
             <div class="form-field">
                 <div><label>Valor</label></div>
-                <input type="number" onChange ="onChangeValue()" id="value">
+                <input type="number" onChange="onChangeValue()" id="value">
                 <div class="error" id="value-required-error">
                     Valor é obrigatório
                 </div>
@@ -55,14 +55,14 @@
 
                 <div class="form-field">
                     <div><label>Moeda</label></div>
-                    <select>
+                    <select id="currency">
                         <option value="BRL" selected>R$</option>
                     </select>
                 </div>
 
                 <div class="form-field">
                     <div><label>Descrição</label></div>
-                    <input type="text">
+                    <input type="text" id="description">
                 </div>
 
                 <div class="form-field">
@@ -73,7 +73,9 @@
                     <label for="income">Receita</label>
                 </div>
 
-                <button type="button" class="solid" disabled id="save-button">Salvar</button>
+                <button type="button" class="solid" disabled id="save-button" onclick="saveTransaction()">
+                    Salvar
+                </button>
                 <button type="button" class="clear">Cancelar</button>
         </form>
     </main>

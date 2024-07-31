@@ -1,3 +1,38 @@
+function saveTransaction() {
+
+    showLoading();
+
+    const transaction = createTransaction();
+        
+    firebase.firestore()
+        .collection('transactions')
+        .add(transaction)
+        .then(() => {
+            hideLoading();
+            window.location.href = "../home/home.html";
+        })
+        .catch(() => {
+            hideLoading();
+            alert('Erro ao salvar transação');
+        })
+}
+
+function createTransaction() {
+    return{
+        type: form.typeExpense().checked ? "expense" : "income",
+        date: form.date().value,
+        money: {
+            currency: form.currency().value,
+            value: parseFloat(form.value().value)
+        },
+        transactionType: form.transactionType().value,
+        description: form.description().value,
+        user: {
+            uid: firebase.auth().currentUser.uid
+        }
+    };
+}
+
 function onchangeDate() {
     const date = form.date().value;
     form.dateRequiredError().style.display = !date ? "block" : "none";
@@ -38,7 +73,7 @@ function isFormValid() {
     }
 
     const transactionType = form.transactionType().value;
-    if (!transactionType){
+    if (!transactionType) {
         return false;
     }
 
@@ -46,11 +81,14 @@ function isFormValid() {
 }
 
 const form = {
+    currency: () => document.getElementById('currency'),
+    description: () => document.getElementById('description'),
     date: () => document.getElementById('date'),
     dateRequiredError: () => document.getElementById('date-required-error'),
     saveButton: () => document.getElementById('save-button'),
     transactionType: () => document.getElementById('transaction-type'),
     transactionTypeRequiredError: () => document.getElementById('transaction-type-required-error'),
+    typeExpense: () => document.getElementById('expense'),
     value: () => document.getElementById('value'),
     valueRequiredError: () => document.getElementById('value-required-error'),
     valueLessOrEqualToZeroError: () => document.getElementById('value-less-or-equal-to-zero-error')
