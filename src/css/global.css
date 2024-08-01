@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    background: linear-gradient(0.30turn, #d11507, #f69d3c);
+    background: linear-gradient(0.30turn, #d11507, #FEC325);
+    font-family: "Poppins", sans-serif;
 }
 
 header {
