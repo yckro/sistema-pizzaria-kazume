@@ -2,17 +2,3 @@
 body {
     height: 100vh;
 }
-form {
-    width: 300px;
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 1%;
-}
-input {
-    border: none;
-}
-button {
-    margin-bottom: 10px;
-    border: none;
-    background: none;
-}

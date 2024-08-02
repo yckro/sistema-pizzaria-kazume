@@ -29,6 +29,15 @@ select {
     width: 100%;
 }
 
+.input-clear{
+    background-color: #5271ff29;
+    border: none; 
+    border-radius: 5px; 
+    outline: none;
+    padding: 15px;
+    margin-top: 10px;
+} 
+
 input[type="radio"] {
     width: auto;
 }
@@ -78,16 +87,22 @@ button.fab.right {
     right: 32px;
 }
 
+.login-btn{
+    background-color: #5C8109; 
+    border: none; 
+    border-radius: 5px; 
+    color: #fff;
+    cursor: pointer; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px; 
+    padding: 10px;
+}
+
 .clear {
     background: transparent;
     border: none;
     color: white;
-}
-
-.solid {
-    background: white;
-    border: none;
-    color: rgb(45, 211, 111);
 }
 
 .outline {
