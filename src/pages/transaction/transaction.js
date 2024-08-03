@@ -14,15 +14,11 @@ function isNewTransaction() {
 
 function findTransactionByUid(uid) {
 
-
-    firebase.firestore()
-        .collection("transactions")
-        .doc(uid)
-        .get()
-        .then(doc => {
+        transactionService.findByUid(uid)
+        .then(transaction => {
             hideLoading();
-            if (doc.exists) {
-                fillTransactionScreen(doc.data());
+            if (transaction) {
+                fillTransactionScreen(transaction);
                 toggleSaveButtonDisable();
             } else {
                 alert("Documento nao encontrado");

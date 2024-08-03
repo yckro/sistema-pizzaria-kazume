@@ -23,17 +23,27 @@ ol li {
 }
 
 ol li:hover {
-    opacity:0.8 ;
+    opacity: 0.8;
 }
 
-ol li.expense{
-    border-left:  10px solid red;
+ol li.expense {
+    border-left: 10px solid red;
 }
 
 ol li.income {
-    border-left: 10px solid green ;
+    border-left: 10px solid green;
 }
 
-p{
+ol li:hover button.danger {
+    display: block;
+}
+
+button.danger {
+    width: auto;
+    float: right;
+    display: none;
+}
+
+p {
     margin: 4px 0;
 }
