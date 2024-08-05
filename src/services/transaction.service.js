@@ -6,14 +6,12 @@ const transactionService = {
             .orderBy('date', 'desc')
             .get()
             .then(snapshot => {
-                hideLoading();
-                return transactions = snapshot.docs.map(doc => ({
+                return snapshot.docs.map(doc => ({
                     ...doc.data(),
                     uid: doc.id
                 }));
             })
     },
-
     findByUid: uid => {
         return firebase.firestore()
             .collection("transactions")
@@ -23,12 +21,21 @@ const transactionService = {
                 return doc.data();
             })
     },
-
-
     remove: transaction => {
         return firebase.firestore()
             .collection("transactions")
             .doc(transaction.uid)
-            .delete()
+            .delete();
+    },
+    save: transaction => {
+        return firebase.firestore()
+            .collection('transactions')
+            .add(transaction);
+    },
+    update: transaction => {
+        return firebase.firestore()
+            .collection("transactions")
+            .doc(getTransactionUid())
+            .update(transaction);
     }
 }

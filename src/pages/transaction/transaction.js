@@ -14,7 +14,7 @@ function isNewTransaction() {
 
 function findTransactionByUid(uid) {
 
-        transactionService.findByUid(uid)
+    transactionService.findByUid(uid)
         .then(transaction => {
             hideLoading();
             if (transaction) {
@@ -64,9 +64,7 @@ function save(transaction) {
 
     showLoading();
 
-    firebase.firestore()
-        .collection('transactions')
-        .add(transaction)
+        transactionService.save(transaction)
         .then(() => {
             hideLoading();
             window.location.href = "../home/home.html";
@@ -80,10 +78,7 @@ function save(transaction) {
 function update(transaction) {
     showLoading();
 
-    firebase.firestore()
-        .collection('transactions')
-        .doc(getTransactionUid())
-        .update(transaction)
+    transactionService.update(transaction)
         .then(() => {
             hideLoading();
             window.location.href = "../home/home.html";
