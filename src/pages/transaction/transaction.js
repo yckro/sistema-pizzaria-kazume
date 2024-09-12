@@ -13,6 +13,7 @@ function isNewTransaction() {
 }
 
 function findTransactionByUid(uid) {
+    showLoading();
 
     transactionService.findByUid(uid)
         .then(transaction => {
@@ -49,7 +50,6 @@ function fillTransactionScreen(transaction) {
     }
 }
 
-
 function saveTransaction() {
     const transaction = createTransaction();
 
@@ -61,23 +61,21 @@ function saveTransaction() {
 }
 
 function save(transaction) {
-
     showLoading();
 
-        transactionService.save(transaction)
+    transactionService.save(transaction)
         .then(() => {
             hideLoading();
             window.location.href = "../home/home.html";
         })
         .catch(() => {
             hideLoading();
-            alert('Erro ao salvar transação');
+            alert('Erro ao salvar transaçao');
         })
 }
 
 function update(transaction) {
     showLoading();
-
     transactionService.update(transaction)
         .then(() => {
             hideLoading();
@@ -85,7 +83,7 @@ function update(transaction) {
         })
         .catch(() => {
             hideLoading();
-            alert('Erro ao atualizar transação');
+            alert('Erro ao atualizar transaçao');
         });
 }
 
@@ -105,7 +103,7 @@ function createTransaction() {
     };
 }
 
-function onchangeDate() {
+function onChangeDate() {
     const date = form.date().value;
     form.dateRequiredError().style.display = !date ? "block" : "none";
 
@@ -135,7 +133,7 @@ function toggleSaveButtonDisable() {
 function isFormValid() {
     const date = form.date().value;
     if (!date) {
-        return false
+        return false;
     }
 
     const value = form.value().value;
@@ -153,8 +151,8 @@ function isFormValid() {
 
 const form = {
     currency: () => document.getElementById('currency'),
-    description: () => document.getElementById('description'),
     date: () => document.getElementById('date'),
+    description: () => document.getElementById('description'),
     dateRequiredError: () => document.getElementById('date-required-error'),
     saveButton: () => document.getElementById('save-button'),
     transactionType: () => document.getElementById('transaction-type'),
@@ -164,5 +162,4 @@ const form = {
     value: () => document.getElementById('value'),
     valueRequiredError: () => document.getElementById('value-required-error'),
     valueLessOrEqualToZeroError: () => document.getElementById('value-less-or-equal-to-zero-error')
-
 }
