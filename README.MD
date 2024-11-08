@@ -41,5 +41,4 @@ Para executar o projeto, siga os passos abaixo:
         Criar: Adicionar novas receitas e despesas.
         Ler: Visualizar as receitas e despesas cadastradas.
         Atualizar: Editar receitas e despesas existentes.
-        Remover: Excluir receitas e despesas.
-
+        Remover: Excluir receitas e despesas
